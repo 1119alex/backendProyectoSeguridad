@@ -5,6 +5,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { HealthController } from './health.controller';
 import configuration from './config/configuration';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
@@ -92,7 +93,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
     WarehouseInventoryModule,
     TransfersModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, HealthController],
   providers: [
     AppService,
     // Guards globales
