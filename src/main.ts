@@ -20,9 +20,11 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
-  // Prefijo global de API
+  // Prefijo global de API (excluye /health para Railway healthcheck)
   const apiPrefix = configService.get('app.apiPrefix');
-  app.setGlobalPrefix(apiPrefix);
+  app.setGlobalPrefix(apiPrefix, {
+    exclude: ['health'],
+  });
 
   // Cookie Parser - Required for CSRF and HttpOnly cookies
   app.use(cookieParser());
