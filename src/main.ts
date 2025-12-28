@@ -140,9 +140,9 @@ async function bootstrap() {
     logger.log(`Swagger documentation available at: /${swaggerPath}`);
   }
 
-  // Puerto de escucha
+  // Puerto de escucha - Railway usa PORT env variable
   const port = configService.get('app.port');
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
 
   const environment = configService.get('app.nodeEnv');
   logger.log(`Application running in ${environment} mode`);
